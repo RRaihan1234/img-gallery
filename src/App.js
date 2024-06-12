@@ -47,7 +47,7 @@ function App() {
     let dragIdIndex = images.findIndex((image)=>image.id === Number(dragId))
     let dropIdIndex = images.findIndex((image)=>image.id === dropId)
     console.log(dragIdIndex, dropIdIndex)
-    if(dragIdIndex === dropIdIndex){
+    if(dragIdIndex === dropIdIndex || Number(dragId) === allData.data.length - 1 || dropId === allData.data.length - 1){
       setImages(images)
     }else if(dragIdIndex > dropIdIndex){
       let tmp = images[dragIdIndex]
@@ -97,7 +97,7 @@ function App() {
         {images.map((image)=>{
            return(
                  <>
-                    {image.id!==allData.data.length-1 && 
+                    {image.id!==allData.data.length - 1 && 
                     <div 
                     draggable 
                     onDragStart = {(e)=>handleDragStart(e, image.id)}
@@ -109,7 +109,13 @@ function App() {
                     <img src={require(`../src/images/${image.image}`)} className={image.selected?'singleImageShadow':'singleImage'}></img>
                     <input type='checkbox' className={image.selected?'showCheck':'check'} onChange={()=>handleCheck(image.id)}/>
                    </div>}
-                    {image.id===allData.data.length-1 && <div key={image.id} className="addImageDiv">
+                    {image.id===allData.data.length - 1 && 
+                    <div key={image.id} 
+                    className="addImageDiv"
+                    onDragStart = {(e)=>handleDragStart(e, image.id)}
+                    onDragEnd = {handleDragEnd}
+                    onDragOver={handleDragOver}
+                    onDrop={(e) => handleDrop(e, image.id)}>
                     <img src={require(`../src/images/${image.image}`)} className='addImage'></img>
                    </div>}
                  </>
