@@ -1,0 +1,45 @@
+.imageGallery{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    align-content: center;
+}
+div:nth-child(1){
+    grid-column:1 / 3;
+    grid-row:1 / 3;
+    align-content: center;
+}
+.singleImageDiv{
+    border:0.125rem solid black;
+    margin:0rem;
+    height: 8rem;
+    width:8rem;
+    margin: 2rem 5rem;
+    position:relative;
+}
+.check{
+    position:absolute;
+    left:1rem;
+    top:1rem;
+    visibility:hidden;
+}
+.singleImage{
+    height: 100%;
+    width: 100%;
+}
+.singleImageDiv{
+    border-radius: 0.1rem;
+}
+.singleImageDiv:hover{
+    background: gray;
+    opacity:0.5;
+}
+.singleImage:hover{
+    background: gray;
+    opacity:0.5;
+}
+.singleImage:hover .check{
+    visibility:visible;
+}
+.singleImageDiv:hover .check{
+    visibility:visible;
+}

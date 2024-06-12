@@ -1,0 +1,9 @@
+.topSectionHeading{
+   margin:0 5rem;
+   margin-top: -2.5rem;
+}
+.topSectionLine{
+    width:100%;
+    height:0.1rem;
+    background: gray;
+}

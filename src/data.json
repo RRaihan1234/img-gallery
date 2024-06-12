@@ -1,0 +1,17 @@
+{
+    "data": [
+      { "id" : 0, "image" : "image-1.webp", "selected" : false },
+      { "id" : 1, "image" : "image-2.webp", "selected" : false },
+      { "id" : 2, "image" : "image-3.webp", "selected" : false },
+      { "id" : 3, "image" : "image-4.webp", "selected" : false },
+      { "id" : 4, "image" : "image-5.webp", "selected" : false },
+      { "id" : 5, "image" : "image-6.webp", "selected" : false },
+      { "id" : 6, "image" : "image-7.webp", "selected" : false },
+      { "id" : 7, "image" : "image-8.webp", "selected" : false },
+      { "id" : 8, "image" : "image-9.webp", "selected" : false },
+      { "id" : 9, "image" : "image-10.jpeg", "selected" : false },
+      { "id" : 10, "image" : "image-11.jpeg", "selected" : false },
+      { "id" : 11, "image" : "add-image.png", "selected" : false }
+    ]
+}
+  
