@@ -1,6 +1,5 @@
 
 import './App.css';
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import allData from '../src/data.json'
 import { useState } from 'react';
 
@@ -8,10 +7,8 @@ function App() {
   const [images, setImages] = useState(allData.data);
   const [deletableArray] = useState([]);
   const [, setRender] = useState(false);
-  const [dropIndicator, setDropIndicator] = useState(null);
 
   const handleCheck = (id) => {
-        console.log(id)
         for(let i = 0; i<images.length; i++){
           if(id===images[i].id){
             if(images[i].selected===false){
@@ -46,7 +43,6 @@ function App() {
     const dragId = e.dataTransfer.getData("text/plain");
     let dragIdIndex = images.findIndex((image)=>image.id === Number(dragId))
     let dropIdIndex = images.findIndex((image)=>image.id === dropId)
-    console.log(dragIdIndex, dropIdIndex)
     if(dragIdIndex === dropIdIndex || Number(dragId) === allData.data.length - 1 || dropId === allData.data.length - 1){
       setImages(images)
     }else if(dragIdIndex > dropIdIndex){
@@ -56,7 +52,6 @@ function App() {
          images[i] = images[i-1]
       }
       images[dropIdIndex]=tmp;
-      console.log(images)
     }else{
       let tmp = images[dragIdIndex]
       let i;
@@ -64,13 +59,11 @@ function App() {
          images[i] = images[i+1]
       }
       images[dropIdIndex]=tmp;
-      console.log(images)
     }
   };
 
   const handleDragOver = (e) => {
     e.preventDefault();
-    //setDropIndicator(e.currentTarget.id);
   };
 
   return (
