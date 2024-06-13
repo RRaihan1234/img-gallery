@@ -1,14 +1,13 @@
-
+import { useState } from 'react';
 import './App.css';
 import allData from '../src/data.json'
-import { useState } from 'react';
 
 function App() {
   const [images, setImages] = useState(allData.data);
   const [deletableArray] = useState([]);
   const [, setRender] = useState(false);
 
-  const handleCheck = (id) => {
+  const handleCheck = (id) => {               // For checking, whether the checkbox inside image is selected or not
         for(let i = 0; i<images.length; i++){
           if(id===images[i].id){
             if(images[i].selected===false){
@@ -23,21 +22,21 @@ function App() {
         setRender((prevState)=>!prevState)
   }
 
-  const handleDelete = () => {
+  const handleDelete = () => {  // For deleting images
         let imagesAfterDeletion = images.filter((image)=>image.selected===false);
         setImages(imagesAfterDeletion);
         deletableArray.length=0;
   }
 
-  const handleDragStart = (e, id) => {
+  const handleDragStart = (e, id) => {   // For drag operation
         e.dataTransfer.setData("text/plain", id.toString());
   }
 
-  const handleDragEnd = (e) => {
+  const handleDragEnd = (e) => {   // For drag operation
         e.dataTransfer.clearData();
   }
 
-  const handleDrop = (e, dropId) => {
+  const handleDrop = (e, dropId) => {   // For drop operation
     setRender((prevState)=>!prevState)
     e.preventDefault();
     const dragId = e.dataTransfer.getData("text/plain");
@@ -62,7 +61,7 @@ function App() {
     }
   };
 
-  const handleDragOver = (e) => {
+  const handleDragOver = (e) => {  // For drag operation
     e.preventDefault();
   };
 
@@ -99,7 +98,7 @@ function App() {
                     onDrop={(e) => handleDrop(e, image.id)}
                     key={image.id} 
                     className={image.selected?"singleImageDivShadow":"singleImageDiv"}>
-                    <img src={require(`../src/images/${image.image}`)} className={image.selected?'singleImageShadow':'singleImage'}></img>
+                    <img src={require(`../src/images/${image.image}`)} className={image.selected?'singleImageShadow':'singleImage'} alt='singleImg'></img>
                     <input type='checkbox' className={image.selected?'showCheck':'check'} onChange={()=>handleCheck(image.id)}/>
                    </div>}
                     {image.id===allData.data.length - 1 && 
@@ -109,7 +108,7 @@ function App() {
                     onDragEnd = {handleDragEnd}
                     onDragOver={handleDragOver}
                     onDrop={(e) => handleDrop(e, image.id)}>
-                    <img src={require(`../src/images/${image.image}`)} className='addImage'></img>
+                    <img src={require(`../src/images/${image.image}`)} className='addImage' alt='addImg'></img>
                    </div>}
                  </>
            )
